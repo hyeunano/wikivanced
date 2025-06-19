@@ -1,0 +1,18 @@
+# Configuration files with possibly sensitive information
+/LocalSettings.php
+
+# MediaWiki web installer/updater
+/mw-config
+
+# MediaWiki usage
+/cache
+/images
+
+# Files and folders that get created in skins
+/skins
+
+# Files and folders that get created in extensions
+/extensions
+
+# Composer
+/composer.json
