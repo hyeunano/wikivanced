@@ -233,7 +233,7 @@ class ClientHtml {
 	 * @return array<string,string> Attributes pairs for the HTML document element
 	 */
 	public function getDocumentAttributes() {
-		return [ 'class' => 'client-nojs' ];
+		return [];
 	}
 
 	/**
@@ -272,8 +272,7 @@ class ClientHtml {
 		} else {
 			$script = "document.documentElement.className = {$jsClassJson};";
 		}
-
-		return $script;
+		return '';
 	}
 
 	/**

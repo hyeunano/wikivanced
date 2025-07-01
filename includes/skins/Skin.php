@@ -685,8 +685,6 @@ abstract class Skin extends ContextSource {
 		$lang = $this->getLanguage();
 		return [
 			'lang' => $lang->getHtmlCode(),
-			'dir' => $lang->getDir(),
-			'class' => 'client-nojs',
 		];
 	}
 
