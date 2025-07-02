@@ -1153,7 +1153,6 @@ class Linker {
 		if ( isset( $attribs['class'] ) && $attribs['class'] ) {
 			$class .= " {$attribs['class']}";
 		}
-		$attribs['class'] = $class;
 
 		if ( $escape ) {
 			$text = htmlspecialchars( $text, ENT_COMPAT );
