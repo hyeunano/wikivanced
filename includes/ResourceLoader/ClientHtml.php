@@ -303,23 +303,6 @@ RLCONF = {$confJson};
 
 		$data = $this->getData();
 
-		// Inline script: Declare initial module states for this page.
-		$states = array_merge( $this->exemptStates, $data['states'] );
-		if ( $states ) {
-			$stateJson = $this->context->encodeJson( $states );
-			$script .= "
-RLSTATE = {$stateJson};
-";
-		}
-
-		// Inline script: Declare general modules to load on this page.
-		if ( $data['general'] ) {
-			$pageModulesJson = $this->context->encodeJson( $data['general'] );
-			$script .= "
-RLPAGEMODULES = {$pageModulesJson};
-";
-		}
-
 		if ( !$this->context->getDebug() ) {
 			$script = ResourceLoader::filter( 'minify-js', $script, [ 'cache' => false ] );
 		}
