@@ -132,7 +132,7 @@ class SkinMustache extends SkinTemplate {
 			] + $this->getUserLanguageAttributes(),
 			$this->printSource()
 		);
-		$bodyContent = $out->getHTML() . "\n" . $printSource;
+		$bodyContent = $out->getHTML();
 
 		$newTalksHtml = $this->getNewtalks() ?: null;
 
