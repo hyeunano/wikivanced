@@ -1967,7 +1967,11 @@ abstract class Skin extends ContextSource {
 			unset( $linkDetails['options' ] );
 			$component = new SkinComponentLink(
 				$key, $linkDetails + [
-					'href' => Title::newFromLinkTarget( $targetTitle )->getLinkURL( $query, false ),
+					'href' => str_replace(
+						['&action=edit', '?action=edit', '/w/index.php?title=','&section='],
+						['', '', '/edit/','?section='],
+						Title::newFromLinkTarget( $targetTitle )->getLinkURL( $query, false )
+					),
 				] + $attrs, $ctx, $options
 			);
 			$newLinks[] = $component->getTemplateData();
