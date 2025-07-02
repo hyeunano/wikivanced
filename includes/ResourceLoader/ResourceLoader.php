@@ -1789,11 +1789,7 @@ MESSAGE;
 	 */
 	public static function makeInlineScript( $script, $nonce = null ) {
 		$js = self::makeLoaderConditionalScript( $script );
-		return new WrappedString(
-			Html::inlineScript( $js ),
-			"<script>(RLQ=window.RLQ||[]).push(function(){",
-			'});</script>'
-		);
+		return '';
 	}
 
 	/**
