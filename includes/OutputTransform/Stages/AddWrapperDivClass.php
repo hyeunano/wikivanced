@@ -30,11 +30,7 @@ class AddWrapperDivClass extends ContentTextTransformStage {
 	protected function transformText( string $text, ParserOutput $po, ?ParserOptions $popts, array &$options ): string {
 		$wrapperDivClass = $options['wrapperDivClass'];
 		$pageLang = $this->getLanguageWithFallbackGuess( $po );
-		return Html::rawElement( 'div', [
-			'class' => 'mw-content-' . $pageLang->getDir() . ' ' . $wrapperDivClass,
-			'lang' => $pageLang->toBcp47Code(),
-			'dir' => $pageLang->getDir(),
-		], $text );
+		return $text;
 	}
 
 	private function getLanguageWithFallbackGuess( ParserOutput $po ): Language {

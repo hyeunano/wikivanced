@@ -2415,12 +2415,7 @@ abstract class Skin extends ContextSource {
 	protected function wrapHTML( $title, $html ) {
 		// This wraps the "real" body content (i.e. parser output or special page).
 		// On page views, elements like categories and contentSub are outside of this.
-		return Html::rawElement( 'div', [
-			'id' => 'mw-content-text',
-			'class' => [
-				'mw-body-content',
-			],
-		], $html );
+		return $html;
 	}
 
 	/**
