@@ -3814,41 +3814,16 @@ class OutputPage extends ContextSource {
 		$user = $this->getUser();
 
 		// Internal variables for MediaWiki core
-		$vars = [
-			// @internal For mediawiki.page.ready
-			'wgBreakFrames' => $this->getFrameOptions() == 'DENY',
-
-			// @internal For jquery.tablesorter
-			'wgSeparatorTransformTable' => $compactSeparatorTransTable,
-			'wgDigitTransformTable' => $compactDigitTransTable,
-			'wgDefaultDateFormat' => $lang->getDefaultDateFormat(),
-			'wgMonthNames' => $lang->getMonthNamesArray(),
-
-			// @internal For debugging purposes
-			'wgRequestId' => WebRequest::getRequestId(),
-		];
+		$vars = [];
 
 		// Start of supported and stable config vars (for use by extensions/gadgets).
 		$vars += [
-			'wgCanonicalNamespace' => $canonicalNamespace,
-			'wgCanonicalSpecialPageName' => $canonicalSpecialPageName,
 			'wgNamespaceNumber' => $title->getNamespace(),
-			'wgPageName' => $title->getPrefixedDBkey(),
 			'wgTitle' => $title->getText(),
 			'wgCurRevisionId' => $curRevisionId,
 			'wgRevisionId' => (int)$this->getRevisionId(),
-			'wgArticleId' => $articleId,
-			'wgIsArticle' => $this->isArticle(),
-			'wgIsRedirect' => $title->isRedirect(),
 			'wgAction' => $this->getContext()->getActionName(),
 			'wgUserName' => $user->isAnon() ? null : $user->getName(),
-			'wgUserGroups' => $services->getUserGroupManager()->getUserEffectiveGroups( $user ),
-			'wgCategories' => $this->getCategories(),
-			'wgPageViewLanguage' => $lang->getCode(),
-			'wgPageContentLanguage' => $lang->getCode(),
-			'wgPageContentModel' => $title->getContentModel(),
-			'wgRelevantPageName' => $relevantTitle->getPrefixedDBkey(),
-			'wgRelevantArticleId' => $relevantTitle->getArticleID(),
 		];
 		if ( $user->isRegistered() ) {
 			$vars['wgUserId'] = $user->getId();
@@ -3883,15 +3858,9 @@ class OutputPage extends ContextSource {
 			$vars['wgUserVariant'] = $languageConverter->getPreferredVariant();
 		}
 		// Same test as SkinTemplate
-		$vars['wgIsProbablyEditable'] = $this->getAuthority()->probablyCan( 'edit', $title );
-		$vars['wgRelevantPageIsProbablyEditable'] = $relevantTitle &&
-			$this->getAuthority()->probablyCan( 'edit', $relevantTitle );
+		$vars['wgIsEditable'] = $this->getAuthority()->probablyCan( 'edit', $title );
 		$restrictionStore = $services->getRestrictionStore();
-		foreach ( $restrictionStore->listApplicableRestrictionTypes( $title ) as $type ) {
-			// Following keys are set in $vars:
-			// wgRestrictionCreate, wgRestrictionEdit, wgRestrictionMove, wgRestrictionUpload
-			$vars['wgRestriction' . ucfirst( $type )] = $restrictionStore->getRestrictions( $title, $type );
-		}
+
 		if ( $title->isMainPage() ) {
 			$vars['wgIsMainPage'] = true;
 		}
