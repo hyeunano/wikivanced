@@ -342,13 +342,9 @@ RLCONF = {$confJson};
 				$startupQuery[$param] = (string)$this->options[$param];
 			}
 		}
-		$chunks[] = $this->getLoad(
-			'startup',
-			Module::TYPE_SCRIPTS,
-			$startupQuery
-		);
 
-		return WrappedString::join( "\n", $chunks );
+
+		return WrappedString::join( '', $chunks );
 	}
 
 	/**
