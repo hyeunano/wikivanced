@@ -112,6 +112,6 @@ class RenderDebugInfo extends ContentTextTransformStage {
 			$text .= "\n<!--Parsoid $parsoidVersion-->\n";
 		}
 
-		return $text;
+		return '';
 	}
 }
