@@ -4316,12 +4316,7 @@ class OutputPage extends ContextSource {
 	 * @return string HTML fragment
 	 */
 	private function feedLink( $type, $url, $text ) {
-		return Html::element( 'link', [
-			'rel' => 'alternate',
-			'type' => "application/$type+xml",
-			'title' => $text,
-			'href' => $url ]
-		);
+		return '';
 	}
 
 	/**
