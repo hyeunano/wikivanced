@@ -4071,14 +4071,6 @@ class OutputPage extends ContextSource {
 			] );
 		}
 
-		# OpenSearch description link
-		$tags['opensearch'] = Html::element( 'link', [
-			'rel' => 'search',
-			'type' => 'application/opensearchdescription+xml',
-			'href' => wfScript( 'opensearch_desc' ),
-			'title' => $this->msg( 'opensearch-desc' )->inContentLanguage()->text(),
-		] );
-
 		$services = MediaWikiServices::getInstance();
 
 		$tags = array_merge(
