@@ -4040,19 +4040,6 @@ class OutputPage extends ContextSource {
 			$tags[] = Html::element( 'link', $tag );
 		}
 
-		if ( $config->get( MainConfigNames::UniversalEditButton ) && $this->isArticleRelated() ) {
-			if ( $this->getAuthority()->probablyCan( 'edit', $this->getTitle() ) ) {
-				$msg = $this->msg( 'edit' )->text();
-				// Use mime type per https://phabricator.wikimedia.org/T21165#6946526
-				$tags['universal-edit-button'] = Html::element( 'link', [
-					'rel' => 'alternate',
-					'type' => 'application/x-wiki',
-					'title' => $msg,
-					'href' => $this->getTitle()->getEditURL(),
-				] );
-			}
-		}
-
 		# Generally the order of the favicon and apple-touch-icon links
 		# should not matter, but Konqueror (3.5.9 at least) incorrectly
 		# uses whichever one appears later in the HTML source. Make sure
