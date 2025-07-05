@@ -106,10 +106,12 @@ class HandleSectionLinks extends ContentTextTransformStage {
 			$fallbackAnchor = htmlspecialchars( $fallbackAnchor, ENT_COMPAT );
 			$fallback = "<span id=\"$fallbackAnchor\"></span>";
 		}
-		return "<h$level" . Html::expandAttributes( $attrs ) . ">"
-			. "$fallback<span class=\"mw-headline\" id=\"$anchorEscaped\">$html</span>"
+		return "<div class=\"wv-heading\">"
+			. "<h$level id=\"$anchorEscaped\"" . Html::expandAttributes( $attrs ) . ">"
+			. $html
 			. $link
-			. "</h$level>";
+			. "</h$level>"
+			. "</div>";
 	}
 
 	private function addSectionLinks( string $text, ParserOutput $po, array $options ): string {
