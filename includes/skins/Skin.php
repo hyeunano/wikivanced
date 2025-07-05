@@ -1987,8 +1987,8 @@ abstract class Skin extends ContextSource {
 	 * @return string
 	 */
 	protected function doEditSectionLinksHTML( array $links, Language $lang ) {
-		$result = Html::openElement( 'span', [ 'class' => 'mw-editsection' ] );
-		$result .= Html::rawElement( 'span', [ 'class' => 'mw-editsection-bracket' ], '[' );
+		$result = Html::openElement( 'span', [ 'class' => 'edit-section' ] );
+		$result .= Html::rawElement( 'span', [ 'class' => 'edit-section-bracket' ], '[' );
 
 		$linksHtml = [];
 		foreach ( $links as $linkDetails ) {
@@ -2004,7 +2004,7 @@ abstract class Skin extends ContextSource {
 			$linksHtml
 		);
 
-		$result .= Html::rawElement( 'span', [ 'class' => 'mw-editsection-bracket' ], ']' );
+		$result .= Html::rawElement( 'span', [ 'class' => 'edit-section-bracket' ], ']' );
 		$result .= Html::closeElement( 'span' );
 		return $result;
 	}
