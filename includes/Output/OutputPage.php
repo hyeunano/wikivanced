@@ -3618,7 +3618,7 @@ class OutputPage extends ContextSource {
 		// Then run the hook, the recommended way of adding body attributes now
 		$this->getHookRunner()->onOutputPageBodyAttributes( $this, $sk, $bodyAttrs );
 
-		$pieces[] = Html::openElement( 'body' );
+		$pieces[] = Html::openElement( 'body' ) . "\n";
 
 		return self::combineWrappedStrings( $pieces );
 	}
