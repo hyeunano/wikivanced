@@ -335,13 +335,9 @@ class LinkRenderer {
 		}
 		$target = $this->normalizeTarget( $target );
 
-		if ( !isset( $query['action'] ) && $target->getNamespace() !== NS_SPECIAL ) {
-			$query['action'] = 'edit';
-			$query['redlink'] = '1';
-		}
+
 
 		$url = $this->getLinkURL( $target, $query );
-		$attribs = [ 'class' => 'new' ];
 		$prefixedText = $this->titleFormatter->getPrefixedText( $target );
 		if ( $prefixedText !== '' ) {
 			// This ends up in parser cache!
